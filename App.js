@@ -1,16 +1,16 @@
-import React, { use } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, FlatList } from 'react-native';
 import { StatusBar } from 'react-native-web';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Input, Button, Checkbox } from '@rneui/themed';
 
 export default function App() {
- const tasks = [
+ const [tasks, setTasks] = useState([
     {key: '1', description: 'Item 1', completed: false},
     {key: '2', description: 'Item 2', completed: true},
     {key: '3', description: 'Item 3', completed: false},
- ]
-const newTask = useState('');
+ ]);
+const [newTask, setNewTask] = useState('');
 
 const taskCompletion = (id) => {
   setTasks(tasks.map(task => task.key === id ? {...task, completed: !task.completed} : task))
@@ -26,12 +26,12 @@ const addTask = () => {
  const renderItem = ({item}) => {
   return (<Checkbox title={item.description} 
     checked={item.completed} 
-    onPress={() => taskCompletion(item.key)} />)
-    (<Text style={item.completed
+    onPress={() => taskCompletion(item.key)}
+    textStyle={item.completed
       ? styles.completed
       : styles.description
     }>{item.description}
-    </Text>
+    </Checkbox>
     )
  };
   return (<SafeAreaView style={styles.container}>
