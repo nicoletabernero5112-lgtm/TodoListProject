@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, FlatList } from 'react-native';
+import { StyleSheet, Text, FlatList, SafeAreaView} from 'react-native';
 import { StatusBar } from 'react-native-web';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { Input, Button, Checkbox } from '@rneui/themed';
 
 export default function App() {
