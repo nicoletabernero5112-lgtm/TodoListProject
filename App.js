@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, FlatList, SafeAreaView} from 'react-native';
-import { StatusBar } from 'react-native-web';
+import { StyleSheet, Text, FlatList, View} from 'react-native';
 import { Input, Button, Checkbox } from '@rneui/themed';
 
 export default function App() {
@@ -11,13 +10,10 @@ export default function App() {
  ]);
 const [newTask, setNewTask] = useState('');
 
-const taskCompletion = (id) => {
-  setTasks(tasks.map(task => task.key === id ? {...task, completed: !task.completed} : task))
-};
 
 const addTask = () => {
   if (newTask.trim() !== '') return;
-    const newTask = {key: (tasks.length +1 ).toString(), description: newTask, completed: false};
+    const newTask = {key: (tasks.length +1 ).toString(), description: newTask, completed: false}
     setTasks([...tasks, newTask]);
     setNewTask('');
 };
@@ -33,6 +29,10 @@ const addTask = () => {
     </Checkbox>
     )
  };
+const taskCompletion = (id) => {
+  setTasks(tasks.map(task => task.key === id ? {...task, completed: !task.completed} : task))
+};
+
   return (<SafeAreaView style={styles.container}>
     <Input placeholder='New Task' value={newTask} changeText={setNewTask} />
     <Button title= '+ Task' onPress={addTask} />
