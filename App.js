@@ -33,11 +33,11 @@ const taskCompletion = (id) => {
   setTasks(tasks.map(task => task.key === id ? {...task, completed: !task.completed} : task))
 };
 
-  return (<SafeAreaView style={styles.container}>
+  return (<View style={styles.container}>
     <Input placeholder='New Task' value={newTask} changeText={setNewTask} />
     <Button title= '+ Task' onPress={addTask} />
     <FlatList data={tasks} renderItem={renderItem}></FlatList>
-  </SafeAreaView>)
+  </View>)
 
 
 
